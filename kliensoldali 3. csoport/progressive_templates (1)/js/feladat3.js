@@ -3,7 +3,6 @@ const observer = new IntersectionObserver(onObserve, {
 })
 
 function onObserve(entries) {
-  entries.forEach(e => console.log(e.target))
   entries.forEach(entry => {
     if(entry.isIntersecting){
       entry.target.classList.add(

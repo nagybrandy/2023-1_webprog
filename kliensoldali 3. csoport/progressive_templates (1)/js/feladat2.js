@@ -17,5 +17,4 @@ function onScroll(){
 
 function onScroll(){
     nav.classList.toggle('navbar-scrolled', window.scrollY > 200)
-    console.log("asd")
 }
