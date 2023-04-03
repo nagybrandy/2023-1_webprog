@@ -1,7 +1,7 @@
 import React from 'react';
 //import PropTypes from "prop-types";
 import "./index.css";
-
+/* eslint-disable react/prop-types */
  const Hello = ({name, count}) => {
   console.log(count)
   /* if(name === ""){
@@ -17,5 +17,5 @@ import "./index.css";
 }
 
 //Hello.propTypes = {name: PropTypes.string, count: PropTypes.number}
-
+/* eslint-enable react/prop-types */
 export default Hello
