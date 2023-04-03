@@ -1,7 +1,6 @@
 //import React from 'react'
 //import PropTypes from "prop-types";
 
-/* eslint-disable react/prop-types */
 export function Hello({name, count}) {
   console.log(count)
   return <>
@@ -9,5 +8,5 @@ export function Hello({name, count}) {
           <p>Na itt vagyok.</p>
          </>
 }
-/* eslint-enable react/prop-types */
-//Hello.propTypes = {name: PropTypes.string, count: PropTypes.string};
+
+// Hello.propTypes = {name: PropTypes.string, count: PropTypes.string};

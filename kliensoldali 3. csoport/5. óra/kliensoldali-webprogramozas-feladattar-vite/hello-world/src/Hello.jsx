@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
+/* eslint-disable react/prop-types */
 const Hello  = ({name, count}) => {
   console.log(count)
   return <>
@@ -13,10 +14,11 @@ const Hello  = ({name, count}) => {
           <p>Örülünk, hogy itt vagy az oldalon</p>
         </>
 }
-Hello.propTypes = {name : PropTypes.string, count: PropTypes.string}
+/* eslint-enable react/prop-types */
+//Hello.propTypes = {name : PropTypes.string, count: PropTypes.string}
 
-Hello.defaultProps = {
+/*Hello.defaultProps = {
   name: 'Stranger',
   count: '1'
-};
+};*/
 export default Hello
