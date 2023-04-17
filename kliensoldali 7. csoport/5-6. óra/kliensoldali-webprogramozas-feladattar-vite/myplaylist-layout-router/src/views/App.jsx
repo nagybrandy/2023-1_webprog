@@ -13,7 +13,11 @@ export function App() {
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="playlists" element={<Playlists />} />
+            <Route path="playlists" element={<Playlists />} >
+              <Route path=":playlist" element={<Playlists />} >
+                <Route path=":track" element={<Playlists />} />
+              </Route>
+            </Route>
             <Route path="/" element={<Home />} />
             <Route path="tracks" element={<Tracks />} />
             <Route path="search" element={<Search />} />
