@@ -4,10 +4,17 @@ import { TrackList } from "./TrackList";
 import { TrackDetails } from "./TrackDetails";
 
 import { examplePlaylists } from "../../domain/playlist";
+// import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 export const Playlists = () => {
-  const selectedPlaylistId = 1;
-
+  const {playlist, track} = useParams();
+  console.log(playlist)
+  //const [selectedPlaylistId, setSelectedPlaylistId] = useState(0);
+  
+  const selectedPlaylistId = parseInt(playlist)
+  const trackId = parseInt(track)
+ 
   const playlists = examplePlaylists;
 
   // Computed values
@@ -21,10 +28,10 @@ export const Playlists = () => {
         <div className="ui six wide column">
           <h3>Playlists</h3>
           <PlaylistForm />
-          <PlaylistList playlists={playlists} selectedPlaylistId={selectedPlaylistId} />
+          <PlaylistList playlists={playlists} selectedPlaylist={selectedPlaylist} selectedPlaylistId={selectedPlaylistId} />
         </div>
         <div className="ui ten wide column">
-          <TrackList />
+          <TrackList selectedPlaylistId={selectedPlaylistId} trackId={trackId}/>
         </div>
       </div>
       <div className="ui divider"></div>

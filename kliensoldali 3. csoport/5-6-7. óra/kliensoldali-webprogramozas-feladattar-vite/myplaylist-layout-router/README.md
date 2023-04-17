@@ -1,4 +1,4 @@
-# Myplaylist -- navigáció és layout
+         # ¸¸Myplaylist -- navigáció és layout
 
 A feladatban komponensekre bontva szerepel egy alkalmazás. Az egyes komponensek egyelőre azonban egymás alatt jelennek meg!
 
