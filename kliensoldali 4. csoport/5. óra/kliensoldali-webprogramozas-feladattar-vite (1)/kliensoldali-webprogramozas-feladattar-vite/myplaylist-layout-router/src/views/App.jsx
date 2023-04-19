@@ -12,7 +12,11 @@ export function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="playlists" element={<Playlists />} />
+            <Route path="playlists" element={<Playlists />}>
+              <Route path=":playlist" element={<Playlists />}> 
+                <Route path=":track" element={<Playlists />} />
+              </Route>
+            </Route>
             <Route path="tracks" element={<Tracks />} />
             <Route path="search" element={<Search />} />
             <Route path="*" element={<Navigate to="/" />} />

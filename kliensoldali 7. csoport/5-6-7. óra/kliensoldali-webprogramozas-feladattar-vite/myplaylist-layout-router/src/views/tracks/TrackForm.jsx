@@ -11,7 +11,7 @@ const Field = ({ label, placeholder, name, value, handleInput, ...attr}) => {
   return (
     <div className="field">
       <label>{label}</label>
-      <input value={value} name={name} onInput={handleInput}type="text" placeholder={placeholder} {...attr} />
+      <input value={value} name={name} onInput={handleInput} type="text" placeholder={placeholder} {...attr} />
     </div>
   );
 };
@@ -25,7 +25,12 @@ export function TrackForm({open, handleClose, formState, useFormState, handleSub
   }
   //console.log(setOpen)
   return (
-    <Modal as="form" className="ui modal" open={open} onClose={handleClose}>
+    <Modal as="form" 
+           className="ui modal"
+           open={open} 
+           onClose={handleClose}
+           onSubmit={handleSubmit}>
+            
       <i className="close icon" onClick={handleClose}></i>
       <div className="header">Add new Track</div>
       <div className="image content">
@@ -46,7 +51,7 @@ export function TrackForm({open, handleClose, formState, useFormState, handleSub
       </div>
       <div className="actions">
         <div className="ui black deny button" onClick={handleClose}>Cancel</div>
-        <button className="ui positive right labeled icon button" onSubmit={handleSubmit}>
+        <button className="ui positive right labeled icon button" >
           Add
           <i className="plus icon"></i>
         </button>
