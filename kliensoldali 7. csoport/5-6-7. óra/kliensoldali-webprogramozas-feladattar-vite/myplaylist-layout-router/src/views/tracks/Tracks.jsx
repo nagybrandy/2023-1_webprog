@@ -16,29 +16,50 @@ const defaultState = {
 
 export function Tracks() {
   const [formState, useFormState] = useState(defaultState)
-
-  useEffect(()=> {
-    console.log(formState)
-  }, [formState])
-
-  
-  const [tracks,useTracks] = useState(exampleTracks);
+  const [tracks, useTracks] = useState(exampleTracks);
   const [open, setOpen] = useState(false);
+  const [editedTrack, setEditedTrack] = useState(false);
+
+  useEffect(() => {
+    console.log(tracks)
+  }, [tracks])
 
   // event handlers
   const handleOpen = () => {
     setOpen(true)
   }
+
   const handleClose = () => {
     setOpen(false)
     useFormState(defaultState)
+    setEditedTrack(false)
   }
-  const handleSubmit = (e)=> {
+
+  const handleSubmit = (e) => {
     e.preventDefault()
     handleClose()
     const newtrack = formState
-    newtrack.id = Math.random().toString()
-    useTracks([...tracks, newtrack])
+    if(!editedTrack){
+      newtrack.id = Math.random().toString()
+      useTracks([...tracks, newtrack])
+    } else {
+      const index = tracks.indexOf(editedTrack)
+      useTracks([
+        ...tracks.slice(0, index),
+          newtrack,
+        ...tracks.slice(index+1)
+      ])
+      setEditedTrack(false)
+    }
+  }
+
+  const handleDelete = (track) => {
+    useTracks(tracks.filter(e => e !== track))
+  }
+
+  const handleChange = (track) => {
+    setOpen(true)
+    setEditedTrack(track)
   }
   return (
     <>
@@ -58,13 +79,21 @@ export function Tracks() {
           </thead>
           <tbody>
             {tracks.map((track) => (
-              <Track key={track.id} track={track} />
+              <Track key={track.id} track={track} handleDelete={handleDelete} handleChange={handleChange} />
             ))}
           </tbody>
         </table>
-       
+
       </div>
-       <TrackForm open={open} setOpen={setOpen} handleClose={handleClose} handleSubmit={handleSubmit} formState={formState} useFormState={useFormState} />
+      <TrackForm 
+            open={open} 
+            setOpen={setOpen} 
+            handleClose={handleClose} 
+            handleSubmit={handleSubmit} 
+            formState={formState} 
+            useFormState={useFormState}
+            editedTrack={editedTrack}
+            />
     </>
   );
 }

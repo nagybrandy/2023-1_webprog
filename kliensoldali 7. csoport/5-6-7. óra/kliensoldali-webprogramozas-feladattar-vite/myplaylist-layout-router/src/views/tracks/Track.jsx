@@ -1,6 +1,6 @@
 
 /* eslint-disable react/prop-types */
-export function Track({ track }) {
+export function Track({ track, handleDelete, handleChange}) {
 
   return (
     <tr>
@@ -11,10 +11,10 @@ export function Track({ track }) {
         <i className="music icon"></i> {track.title}
       </td>
       <td className="right aligned collapsing">
-        <button className="ui icon button">
+        <button className="ui icon button" onClick={() => handleChange(track)}>
           <i className="edit icon"></i>
         </button>
-        <button className="ui icon button red">
+        <button className="ui icon button red" onClick={() => handleDelete(track)}>
           <i className="trash icon"></i>
         </button>
       </td>
