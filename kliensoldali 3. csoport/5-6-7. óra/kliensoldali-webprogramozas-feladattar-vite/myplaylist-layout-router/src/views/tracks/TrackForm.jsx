@@ -18,15 +18,12 @@ const Field = ({ label, placeholder, name, value, handleInput, ...attr}) => {
 
 
 export function TrackForm({open, handleClose, handleSubmit, formState, setFormState}) {
-  const handleSub = (e)=> {
-    e.preventDefault()
-    handleSubmit()
-  }
+
   const handleInput = (e)=> {
     setFormState({ ...formState, [e.target.name] : e.target.value })
   }
   return (
-    <Modal as="form" className="ui modal" open={open}>
+    <Modal as="form" className="ui modal" open={open} onSubmit={handleSubmit}>
       <i className="close icon" onClick={handleClose}></i>
       <div className="header">Add new Track</div>
       <div className="image content">
@@ -47,7 +44,7 @@ export function TrackForm({open, handleClose, handleSubmit, formState, setFormSt
       </div>
       <div className="actions">
         <div className="ui black deny button" onClick={handleClose}>Cancel</div>
-        <button className="ui positive right labeled icon button" onSubmit={handleSub}>
+        <button className="ui positive right labeled icon button">
           Add
           <i className="plus icon"></i>
         </button>

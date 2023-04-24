@@ -15,26 +15,29 @@ const defaultState = {
 export function Tracks() {
   const [open, setOpen] = useState(false)
   const [tracks, setTracks] = useState(exampleTracks);
-
-
   const [formState, setFormState] = useState(defaultState)
+
   useEffect(()=>{
-    console.log(formState)
-  },[formState])
+    console.log(tracks)
+  },[tracks])
 
   // event handlers
   const handleOpen = ()=> {
     setOpen(true)
   }
+  
   const handleClose = () => {
     setOpen(false)
   }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const newtrack = formState
     newtrack.id = Math.random().toString
     setTracks([...tracks, newtrack])
+    handleClose()
   }
+
   return (
     <>
       <div className="ui container">
